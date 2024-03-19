@@ -6,5 +6,10 @@ pipeline {
                sh 'mvn clean package'
             }
         }
+        stage('Artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/*.war', fingerprint: true
+            }
+        }
     }
 }
